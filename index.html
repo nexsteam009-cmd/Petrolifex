@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petrolifex - Sign Up</title>
+    <title>Petrolifex - Login</title>
     <style>
-        /* --- ĐÂY LÀ ĐOẠN CSS MỚI BẠN VỪA GỬI --- */
         body {
             margin: 0;
             padding: 0;
@@ -13,7 +12,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #1e1e1e; /* Đổi màu nền ngoài thành màu tối cho hợp với form */
+            background-color: #1e1e1e; 
             font-family: system-ui, -apple-system, sans-serif;
         }
 
@@ -23,7 +22,7 @@
           --font-color-sub: #7e7e7e;
           --bg-color: #111;
           --main-color: #fefefe;
-          padding: 20px;
+          padding: 30px;
           background: var(--bg-color);
           display: flex;
           flex-direction: column;
@@ -38,14 +37,14 @@
         .title {
           color: var(--font-color);
           font-weight: 900;
-          font-size: 20px;
-          margin-bottom: 25px;
+          font-size: 22px;
+          margin-bottom: 10px;
         }
 
         .title span {
           color: var(--font-color-sub);
           font-weight: 600;
-          font-size: 17px;
+          font-size: 15px;
         }
 
         .input {
@@ -60,6 +59,7 @@
           color: var(--font-color);
           padding: 5px 10px;
           outline: none;
+          box-sizing: border-box;
         }
 
         .input::placeholder {
@@ -71,63 +71,64 @@
           border: 2px solid var(--input-focus);
         }
 
-        .login-with {
+        .action-container {
+          width: 100%;
           display: flex;
-          gap: 20px;
-        }
-
-        .button-log {
-          cursor: pointer;
-          width: 40px;
-          height: 40px;
-          border-radius: 100%;
-          border: 2px solid var(--main-color);
-          background-color: var(--bg-color);
-          box-shadow: 4px 4px var(--main-color);
-          color: var(--font-color);
-          font-size: 25px;
-          display: flex;
-          justify-content: center;
+          flex-direction: column;
           align-items: center;
-        }
-
-        .icon {
-          width: 24px;
-          height: 24px;
-          fill: var(--main-color);
-        }
-
-        .button-log:active, .button-confirm:active {
-          box-shadow: 0px 0px var(--main-color);
-          transform: translate(3px, 3px);
+          gap: 15px;
+          margin-top: 10px;
         }
 
         .button-confirm {
-          margin: 50px auto 0 auto;
-          width: 120px;
-          height: 40px;
+          width: 100%;
+          height: 42px;
           border-radius: 5px;
           border: 2px solid var(--main-color);
           background-color: var(--bg-color);
           box-shadow: 4px 4px var(--main-color);
-          font-size: 17px;
-          font-weight: 600;
+          font-size: 16px;
+          font-weight: 700;
           color: var(--font-color);
           cursor: pointer;
+          transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .button-confirm:active {
+          box-shadow: 0px 0px var(--main-color);
+          transform: translate(3px, 3px);
+        }
+
+        .switch-action {
+          color: var(--font-color-sub);
+          font-size: 14px;
+        }
+
+        .switch-action a {
+          color: var(--input-focus);
+          text-decoration: none;
+          font-weight: 600;
+        }
+
+        .switch-action a:hover {
+          text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
     <form class="form">
-      <div class="title">Welcome,<br><span>sign up to continue</span></div>
+      <div class="title">Welcome,<br><span>sign in to continue</span></div>
+      
       <input type="email" placeholder="Email" name="email" class="input">
       <input type="password" placeholder="Password" name="password" class="input">
-      <div class="login-with">
-        <div class="button-log"></div>
+      
+      <div class="action-container">
+        <button type="submit" class="button-confirm">Login</button>
+        <div class="switch-action">
+          Don't have an account? <a href="#">Register</a>
         </div>
       </div>
-      <button class="button-confirm">Login</button>
     </form>
 
 </body>
