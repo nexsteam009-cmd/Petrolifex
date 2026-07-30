@@ -5,22 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petrolifex - Login</title>
     <style>
-        body {
+        /* --- TỐI ƯU TOÀN BỘ GIAO DIỆN --- */
+        body, html {
             margin: 0;
             padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgb(10, 10, 10);
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        /* Vùng chứa Canvas chạy nền */
+        #canvas-container {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Nằm dưới cùng */
+        }
+
+        #bg-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Căn giữa Form đè lên trên nền động */
+        .wrapper {
+            position: absolute;
+            inset: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background-color: #1e1e1e; 
-            font-family: system-ui, -apple-system, sans-serif;
+            z-index: 2; /* Nằm đè lên Canvas */
+            pointer-events: none; /* Tránh cản chuột tương tác với nền */
         }
 
         .form {
           --input-focus: #2d8cf0;
           --font-color: #fefefe;
           --font-color-sub: #7e7e7e;
-          --bg-color: #111;
+          --bg-color: rgba(17, 17, 17, 0.9); /* Làm trong suốt nhẹ để thấy nền chạy phía sau */
           --main-color: #fefefe;
           padding: 30px;
           background: var(--bg-color);
@@ -32,104 +58,12 @@
           border-radius: 5px;
           border: 2px solid var(--main-color);
           box-shadow: 4px 4px var(--main-color);
+          pointer-events: auto; /* Cho phép nhập liệu form bình thường */
+          backdrop-filter: blur(5px); /* Làm mờ hiệu ứng phía sau form */
         }
 
         .title {
           color: var(--font-color);
           font-weight: 900;
           font-size: 22px;
-          margin-bottom: 10px;
-        }
-
-        .title span {
-          color: var(--font-color-sub);
-          font-weight: 600;
-          font-size: 15px;
-        }
-
-        .input {
-          width: 250px;
-          height: 40px;
-          border-radius: 5px;
-          border: 2px solid var(--main-color);
-          background-color: var(--bg-color);
-          box-shadow: 4px 4px var(--main-color);
-          font-size: 15px;
-          font-weight: 600;
-          color: var(--font-color);
-          padding: 5px 10px;
-          outline: none;
-          box-sizing: border-box;
-        }
-
-        .input::placeholder {
-          color: var(--font-color-sub);
-          opacity: 0.8;
-        }
-
-        .input:focus {
-          border: 2px solid var(--input-focus);
-        }
-
-        .action-container {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 15px;
-          margin-top: 10px;
-        }
-
-        .button-confirm {
-          width: 100%;
-          height: 42px;
-          border-radius: 5px;
-          border: 2px solid var(--main-color);
-          background-color: var(--bg-color);
-          box-shadow: 4px 4px var(--main-color);
-          font-size: 16px;
-          font-weight: 700;
-          color: var(--font-color);
-          cursor: pointer;
-          transition: transform 0.1s, box-shadow 0.1s;
-        }
-
-        .button-confirm:active {
-          box-shadow: 0px 0px var(--main-color);
-          transform: translate(3px, 3px);
-        }
-
-        .switch-action {
-          color: var(--font-color-sub);
-          font-size: 14px;
-        }
-
-        .switch-action a {
-          color: var(--input-focus);
-          text-decoration: none;
-          font-weight: 600;
-        }
-
-        .switch-action a:hover {
-          text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-
-    <form class="form">
-      <div class="title">Welcome,<br><span>sign in to continue</span></div>
-      
-      <input type="email" placeholder="Email" name="email" class="input">
-      <input type="password" placeholder="Password" name="password" class="input">
-      
-      <div class="action-container">
-        <button type="submit" class="button-confirm">Login</button>
-        <div class="switch-action">
-          Don't have an account? <a href="#">Register</a>
-        </div>
-      </div>
-    </form>
-
-</body>
-</html>
+          margin-bottom:
